@@ -1,6 +1,5 @@
 import React from "react";
-import { Router, Route } from "react-router-dom";
-import history from "../history";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "./Footer";
 import SomePage from "./SomePage";
 
@@ -9,13 +8,15 @@ import Home from "./Home";
 class App extends React.Component {
   render() {
     return (
-      <div className="main">
-        <Router history={history}>
-          <Route path="/" exact component={Home} />
-          <Route path="/any" exact component={SomePage} />
-        </Router>
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="main">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/any" exact component={SomePage} />
+          </Switch>
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }
